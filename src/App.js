@@ -1,13 +1,16 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 import NavBar from './components/NavBar/NavBar';
+import ItemListContainer from './components/NavBar/ItemListContainer';
+
 
 function App() {
   return (
-
-    <NavBar />
-
+    <>
+    <NavBar />,
+    <ItemListContainer 
+    destacados="Productos destacados de la semana en Tienda Guud"
+    masVendidos="Productos mas vendidos en Tienda Guud" />
+    </>
   );
 }
 
