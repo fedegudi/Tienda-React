@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from './components/NavBar/NavBar';
-import ItemListContainer from './components/NavBar/ItemListContainer';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemCount from './components/ItemCount/ItemCount';
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <ItemListContainer 
     destacados="Productos destacados de la semana en Tienda Guud"
     masVendidos="Productos mas vendidos en Tienda Guud" />
+    <ItemCount />
     </>
   );
 }
