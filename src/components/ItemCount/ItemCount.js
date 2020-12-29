@@ -1,22 +1,43 @@
 import React from 'react'
 
 
-const ItemCount = () =>{
+const ItemCount = ({inicial,stock}) =>{
 
-    const [contador, setContador] = React.useState(1);
+ /*   const handleAdd = () => {
+        return ()=>{
+            if(stock <=0){
+                alert("no hay Stock")
+            }else{
+                alert("se van a agregar")
+            }
+        }
+    }
+*/
+
+    const [contador, setContador] = React.useState(0);
 
     const [fecha, setFecha] = React.useState("");
     
     const aumentarContador = () =>{
-       setContador(contador+1)
+        let cantidad = contador + 1;
+        if(cantidad <= stock){
+            setContador(cantidad)
+        }
     }
 
     const bajarContador = () =>{
-        setContador(contador-1)
+        let cantidad = contador - 1;
+        if(cantidad >= 0){
+            setContador(cantidad)
+        }
     }
 
     const resetearContador = () =>{
-        setContador(1)
+        setContador(0)
+    }
+
+    const onAdd= () =>{
+        /*todavia no se implementa*/
     }
 
     const ultimoClick = () =>{
@@ -32,6 +53,7 @@ const ItemCount = () =>{
         <button onClick={ aumentarContador }>Aumentar contador</button>
         <button onClick={ bajarContador } >Bajar contador</button>
         <button onClick={ resetearContador } >Resetear contador</button>
+        <button /*onClick={ onAdd }*/> Agregar</button>
         </div>
         
     )
