@@ -1,18 +1,19 @@
 import React from 'react';
-import productos from './productos'
+import prod from './productos'
 
 
 
 
 
 
-const ItemList =()=> {
+
+const ItemList =(prod)=> {
 
 const [productos,setProductos] = React.useState([])
 
 
  React.useEffect(()=>{
-    fetch("https://pokeapi.co/api/v2/pokemon/")
+    fetch("./productos")
 
     .then((respuesta)=>{
       return respuesta.json()
@@ -27,8 +28,8 @@ const [productos,setProductos] = React.useState([])
     <div>
       <h1>Productos!</h1>
       { productos.length === 0 ? <p>No hay nada</p> : null }
-      {productos.map((producto)=>{
-        return <p>{producto.name}</p>
+      {productos.map((prod)=>{
+        return <p>{prod.nombre}</p>
 
       })}
     </div>

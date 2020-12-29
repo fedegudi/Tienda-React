@@ -1,4 +1,5 @@
-import productos from './productos';
+import React from 'react';
+
 
 
 const Item = ({props}) => {
