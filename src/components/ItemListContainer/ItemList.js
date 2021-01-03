@@ -1,40 +1,29 @@
 import React from 'react';
-import prod from './productos'
+import Item from './Item'
 
 
+const ItemList = ({items}) => {
 
-
-
-
-
-const ItemList =(prod)=> {
-
-const [productos,setProductos] = React.useState([])
-
-
- React.useEffect(()=>{
-    fetch("./productos")
-
-    .then((respuesta)=>{
-      return respuesta.json()
-    })
-    .then((respuesta)=>{
-      setProductos(respuesta.results)
-    })
-  },[])
-
-
-  return (
-    <div>
-      <h1>Productos!</h1>
-      { productos.length === 0 ? <p>No hay nada</p> : null }
-      {productos.map((prod)=>{
-        return <p>{prod.nombre}</p>
-
-      })}
-    </div>
-  );
+    return (
+        <> 
+        <h1>Fede</h1>
+        </>
+      /*  <div className="row">
+            {items.length > 0
+            ? items.map(item=>{
+                return (
+                    <Item key={item.id} id={item.id} titulo={item.titulo} precio={item.precio} imagen={item.img}/>
+                )
+            })
+            : <Loader/>}
+        </div>*/
+        
+    )
 }
+
+
+
+
 
 export default ItemList
 
