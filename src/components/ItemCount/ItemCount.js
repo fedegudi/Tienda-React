@@ -1,66 +1,38 @@
-import React from 'react'
+import React , {useState} from 'react'
 
+const ItemCount = ({stock,initial}) => {
 
-const ItemCount = ({inicial,stock}) =>{
+    const [cantidad,setCantidad] = useState(initial)
 
- /*   const handleAdd = () => {
-        return ()=>{
-            if(stock <=0){
-                alert("no hay Stock")
-            }else{
-                alert("se van a agregar")
-            }
-        }
-    }
-*/
-
-    const [contador, setContador] = React.useState(0);
-
-    const [fecha, setFecha] = React.useState("");
-    
-    const aumentarContador = () =>{
-        let cantidad = contador + 1;
-        if(cantidad <= stock){
-            setContador(cantidad)
+    const aumentarCantidad = () => {
+        if(cantidad < stock){
+            setCantidad(cantidad + 1)
         }
     }
 
-    const bajarContador = () =>{
-        let cantidad = contador - 1;
-        if(cantidad >= 0){
-            setContador(cantidad)
+    const disminuirCantidad = () => {
+        if(cantidad > 0){
+            setCantidad(cantidad - 1)
         }
     }
 
-    const resetearContador = () =>{
-        setContador(0)
-    }
-
-    const onAdd= () =>{
-        /*todavia no se implementa*/
-    }
-
-    const ultimoClick = () =>{
-        setFecha(new Date().toLocaleString());
-    }
-
-    return(
+   const onAdd = () => {
         
-        <div onClick={ ultimoClick } 
-        style= {{border:"red", borderStyle:"solid"}}>
-        <p>{fecha}</p>
-        <p style={{color:"blue", fontSize:50}} >Contador de cliks : { contador }</p>
-        <button onClick={ aumentarContador }>Aumentar contador</button>
-        <button onClick={ bajarContador } >Bajar contador</button>
-        <button onClick={ resetearContador } >Resetear contador</button>
-        <button /*onClick={ onAdd }*/> Agregar</button>
+    }
+
+    return (
+
+
+
+        <div >
+        <p style={{color:"blue", fontSize:50}} >Contador de cliks : { cantidad }</p>
+        <button onClick={ aumentarCantidad }>Aumentar contador</button>
+        <button onClick={ disminuirCantidad } >Bajar contador</button>
+        <button onClick={ onAdd }> Agregar</button>
         </div>
         
-    )
-}
-
-
-
-
-
+        
+        )
+    
+    }
 export default ItemCount

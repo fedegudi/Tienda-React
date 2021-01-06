@@ -1,27 +1,57 @@
-import React from 'react';
-import NavBar from './components/NavBar/NavBar';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
-import ItemCount from './components/ItemCount/ItemCount';
-import ItemList from './components/ItemListContainer/ItemList'
+import React from 'react'
+import {BrowserRouter, Route, Switch } from 'react-router-dom'
+import NavBar from './components/NavBar/NavBar'
+import ItemListContainer from './components/ItemListContainer/ItemListContainer'
+import ItemDetailContainer from './components/ItemListContainer/ItemDetailContainer'
 
 
 
 
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <NavBar/>
+      <main>
+        <Switch>
+          <Route path="/" exact>
+            <ItemListContainer />
+          </Route>
+
+          <Route path="/categoria/:id">
+            <ItemListContainer />
+          </Route>
+
+          <Route path="/item/:id">
+            <ItemDetailContainer />
+          </Route>
+
+        </Switch>
+
+      </main>
+    </BrowserRouter>
+  )
+
+
+}
+
+
+
+
+/*
 function App() {
   return (
     <>
-    <NavBar />,
-    <ItemListContainer 
-    destacados="Productos destacados de la semana en Tienda Guud"
-    masVendidos="Productos mas vendidos en Tienda Guud"
-    nombre="Fede" />
+    <NavBar></NavBar>
+    <ItemListContainer />
     <ItemCount
-    /*onAdd ={handleAdd}*/
-    inicial="1" 
-    stock="5" />
-    <ItemList/>
+    initial={1} 
+    stock={10}
+    />
     </>
   );
 }
+*/
+
 
 export default App;

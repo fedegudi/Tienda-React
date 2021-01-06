@@ -1,0 +1,101 @@
+ItemListContainer.js
+import React, { useEffect, useState } from 'react'
+import ItemList from './ItemList';
+const productos =[ 
+    {
+    categoria: "1",    
+    id:"1",
+    titulo:"Notebook",
+    precio:"17",
+    img: "https://http2.mlstatic.com/D_668117-MLA31786420833_082019-I.jpg"
+    },
+    {
+    categoria: "1",
+    id:"2",
+    titulo:"PC",
+    precio:"19",
+    img:"https://http2.mlstatic.com/D_725124-MLA40927542006_022020-I.jpg"
+    },
+    {
+    categoria: "2",
+    id:"3",
+    titulo:"Teclado",
+    precio:"22",
+    img:"https://http2.mlstatic.com/D_617506-MLA43746164726_102020-I.jpg"
+    },
+    {
+    categoria: "2",
+    id:"4",
+    titulo:"Mouse",
+    precio:"34",
+    img:"https://http2.mlstatic.com/D_761041-MLA41995986461_052020-I.jpg"
+    },
+]
+const ItemListContainer = () => {
+    const [items,setItems] = useState([])
+    useEffect(()=>{
+        let pedido = new Promise((res,rej)=>{
+            setTimeout(()=>{
+                res(productos)
+            },2000)
+        })
+        pedido
+        .then((resultado)=>{
+            console.log("Pedido exitoso")
+            console.log(resultado)
+            setItems(resultado);
+        })
+    },[])
+    return(
+        <div className="container">
+        <h1>Productos</h1>
+        { items.length === 0 ? <p>No hay nada</p> : <ItemList items={items}/> } 
+        </div>
+    )
+}
+export default ItemListContainer;
+Chincheta añadida por [Tutor] Mariano L. Acosta
+12:57
+ItemList.js
+import React from 'react';
+import Item from './Item'
+const ItemList = ({items}) => {
+    return (
+       <div className="row">
+        {items.map(item=>{
+                return (
+                    <Item key={item.id} id={item.id} titulo={item.titulo} precio={item.precio} imagen={item.img}/>
+                )
+            })}
+        </div>
+    )
+}
+export default ItemList
+Chincheta añadida por [Tutor] Mariano L. Acosta
+12:57
+Item.js
+import React from 'react';
+const Item = ({ imagen, precio, titulo, id}) => {
+  return (
+   <div className="col s6 m4 l3">
+            <div className="card">
+                <div className="card-image">
+                    <img src={imagen} alt={`title-id`}/>
+                </div>
+                <div className="card-content">
+                    <span className="card-title truncate">{titulo}</span>
+                    <p>${precio}</p>
+                </div>
+                <div className="card-action">
+                    {/*<NavLink to={`/item/${id}`}>ver detalle</NavLink>*/}
+                </div>
+            </div>
+    </div>
+  )
+}
+export default Item;
+12:58
+lo unico que la estructura de carpetas te tiene que quedar asi:
+\ItemListContainer
+   \ItemList
+       \Item

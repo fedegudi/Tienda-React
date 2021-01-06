@@ -1,41 +1,65 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react'
 import CartWidget from '../CartWidget/CartWidget';
+import { NavLink } from 'react-router-dom';
+import M from "materialize-css"
 
 
-function NavBar (){
 
-    return(
-        <div className="NavBar">
-            <h1>Tienda Guud</h1>
 
-            <CartWidget />
-            
-            <ul class="nav nav-tabs justify-content-end">
-  <li class="nav-item">
-    <a class="nav-link" href="#">Ofertas</a>
-  </li>
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Productos</a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Autos</a>
-      <a class="dropdown-item" href="#">Tecnologia</a>
-      <a class="dropdown-item" href="#">Deportes</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Herramientas</a>
-    </div>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Contacto</a>
-  </li>
-</ul>
- 
-        </div>
+
+
+
+const NavBar = () => {
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.sidenav');
+        var instances = M.Sidenav.init(elems,{});
+    });
+
+    return (
+        <>
+    {/* <nav>
+        <CartWidget />
+            <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Tienda Guud</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">Ofertas</a></li>
+                <li><a href="badges.html">Productos</a></li>
+            </ul>
+            </div>
+    </nav> */}
+
+    
+
+<nav className="red accent-2">
+            <div className="nav-wrapper">
+            <NavLink to="/" exact className="brand-logo black-text">Tienda Guud</NavLink>
+            <a href="#" data-target="mobile-demo" className="sidenav-trigger black-text">
+                <i className="material-icons">menu</i>
+            </a>
+            <ul className="right hide-on-med-and-down">
+                <li>
+                    <NavLink to="/categoria/1" className="black-text">PC</NavLink>
+                </li>
+                <li>
+                    <NavLink to="/categoria/2" className="black-text">Componentes de PC</NavLink>
+                </li>
+            </ul>
+            <CartWidget/>
+            </div>
+        </nav>
+
+        <ul className="sidenav" id="mobile-demo">
+            <li>
+                <NavLink to="/categoria/1" className="black-text">categoria 1</NavLink>
+            </li>
+            <li>
+                <NavLink to="/categoria/2" className="black-text">categoria 2</NavLink>
+            </li>
+        </ul>
+    </>
     )
-
 }
 
-
 export default NavBar;
-
-
